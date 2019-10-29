@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.nycschools.R
 import com.example.nycschools.databinding.FragmentSchoolListBinding
+import com.example.nycschools.utils.Logger
 import com.example.nycschools.viewmodels.SchoolsViewModel
 
 class SchoolListFragment : Fragment() {
@@ -31,6 +32,8 @@ class SchoolListFragment : Fragment() {
             container,
             false
         )
+
+        Logger.log("num of schools in storage ${viewModel.loadSchools().size}")
 
         return binding.root
     }

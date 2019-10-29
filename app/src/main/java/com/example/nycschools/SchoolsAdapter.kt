@@ -47,7 +47,7 @@ private class SchoolsDiff : DiffUtil.ItemCallback<School>() {
 
     override fun areContentsTheSame(oldItem: School, newItem: School): Boolean {
         return oldItem.dbn == newItem.dbn &&
-                oldItem.schoolName == newItem.schoolName &&
-                oldItem.schoolEmail == newItem.schoolEmail
+                oldItem.school_name == newItem.school_name &&
+                oldItem.school_email == newItem.school_email
     }
 }

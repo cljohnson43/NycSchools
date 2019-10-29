@@ -12,4 +12,7 @@ interface SchoolDao {
 
     @Query("SELECT * FROM ${School.TABLE_NAME}")
     fun loadSchools(): List<School>
+
+    @Query("SELECT COUNT(*) FROM ${School.TABLE_NAME}")
+    fun numSchools(): Int
 }

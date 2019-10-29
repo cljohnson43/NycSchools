@@ -6,22 +6,9 @@ import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import java.io.InputStream
 
-inline fun <reified T> Gson.fromJson(json: String) = this.fromJson<T>(json, object: TypeToken<T>() {}.type)
-
-class JSONLoader<T>(dataStream: InputStream) {
-    lateinit var list: List<T>
-
-    init {
-        val bufferedReader = dataStream.bufferedReader()
-        var str: String
-        str = bufferedReader.readText()
-
-        try {
-            list = Gson().fromJson<List<T>>(str)
-
-        }catch (e: JsonSyntaxException) {
-            Logger.e(e.message ?: "unable to parse raw json file")
-        }
-        bufferedReader.close()
-    }
+//inline fun <reified T> Gson.fromJson(json: String) = this.fromJson<T>(json, object: TypeToken<T>() {}.type)
+fun <T> fromJSonList(json: String, myType: Class<T>): List<T> {
+    val gson = Gson()
+    val collectionType = TypeToken.getParameterized(List::class.java, myType).type
+    return gson.fromJson(json, collectionType)
 }
