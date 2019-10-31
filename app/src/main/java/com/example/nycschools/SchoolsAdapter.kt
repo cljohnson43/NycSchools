@@ -1,7 +1,6 @@
 package com.example.nycschools
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -36,7 +35,6 @@ class SchoolsAdapter : ListAdapter<School, SchoolsAdapter.SchoolsViewHolder>(Sch
                 executePendingBindings()
             }
         }
-
     }
 }
 

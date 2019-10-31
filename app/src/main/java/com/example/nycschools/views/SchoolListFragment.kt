@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.nycschools.R
+import com.example.nycschools.SchoolsAdapter
 import com.example.nycschools.databinding.FragmentSchoolListBinding
-import com.example.nycschools.utils.Logger
 import com.example.nycschools.viewmodels.SchoolsViewModel
 
 class SchoolListFragment : Fragment() {
@@ -33,7 +34,10 @@ class SchoolListFragment : Fragment() {
             false
         )
 
-        Logger.log("num of schools in storage ${viewModel.loadSchools().size}")
+        val schools = viewModel.loadSchools()
+        binding.rvList.adapter = SchoolsAdapter().apply {
+            submitList(schools)
+        }
 
         return binding.root
     }

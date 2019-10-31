@@ -8,11 +8,11 @@ import androidx.room.PrimaryKey
 @Entity(tableName = School.TABLE_NAME)
 data class School private constructor(
     @PrimaryKey(autoGenerate = true) var id: Long? = null,
-    @ColumnInfo(name = School.COLUMN_DBN) val dbn: String,
-    @ColumnInfo(name = School.COLUMN_SCHOOL_NAME) val school_name: String,
-    @ColumnInfo(name = School.COLUMN_LOCATION) val location: String,
-    @ColumnInfo(name = School.COLUMN_PHONE_NUMBER) val phone_number: String,
-    @ColumnInfo(name = School.COLUMN_FAX_NUMBER) val fax_number: String,
+    @ColumnInfo(name = School.COLUMN_DBN) val dbn: String?,
+    @ColumnInfo(name = School.COLUMN_SCHOOL_NAME) val school_name: String?,
+    @ColumnInfo(name = School.COLUMN_LOCATION) val location: String?,
+    @ColumnInfo(name = School.COLUMN_PHONE_NUMBER) val phone_number: String?,
+    @ColumnInfo(name = School.COLUMN_FAX_NUMBER) val fax_number: String?,
     @ColumnInfo(name = School.COLUMN_SCHOOL_EMAIL) val school_email: String?,
     @ColumnInfo(name = School.COLUMN_WEBSITE) val website: String?,
     @ColumnInfo(name = School.COLUMN_TOTAL_STUDENTS) val total_students: String?,
@@ -27,11 +27,11 @@ data class School private constructor(
     @ColumnInfo(name = School.COLUMN_ZIP) val zip: String?
 ) {
     constructor(
-        dbn: String,
-        school_name: String,
-        location: String,
-        phone_number: String,
-        fax_number: String,
+        dbn: String?,
+        school_name: String?,
+        location: String?,
+        phone_number: String?,
+        fax_number: String?,
         school_email: String?,
         website: String?,
         total_students: String?,

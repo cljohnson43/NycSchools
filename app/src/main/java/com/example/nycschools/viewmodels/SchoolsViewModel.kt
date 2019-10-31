@@ -21,19 +21,16 @@ class SchoolsViewModel(app: Application) : AndroidViewModel(app) {
     init {
         val numSchools = db.schoolDao().numSchools()
         if (numSchools < 1) {
-            Logger.log("empty db: reading json file into db...")
             val dataStream: InputStream = app.resources.openRawResource(R.raw.nyc_school)
             val bufferedReader = dataStream.bufferedReader()
             val str = bufferedReader.readText()
-            val schools = fromJSonList(str, School::class.java)
+            val schools: ArrayList<School> = fromJSonList(str, School::class.java)
             dataStream.close()
 
-            db.schoolDao().insertSchools(*(schools as Array<out School>))
-            Logger.log("read ${db.schoolDao().numSchools()} schools into db")
+            db.schoolDao().insertSchools(*schools.toTypedArray())
         }
     }
 
     fun loadSchools(): List<School> = db.schoolDao().loadSchools()
     fun insertSchools(vararg schools: School) = db.schoolDao().insertSchools(*schools)
-
 }
