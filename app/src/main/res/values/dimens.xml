@@ -3,4 +3,5 @@
     <dimen name="double_spacing">16dp</dimen>
     <dimen name="spacing">8dp</dimen>
     <dimen name="label">18sp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
 </resources>

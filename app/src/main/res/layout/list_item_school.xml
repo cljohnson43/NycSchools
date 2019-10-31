@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="school"
             type="com.example.nycschools.data.School" />
@@ -13,6 +14,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/corner_radius"
         android:layout_marginLeft="@dimen/double_spacing"
         android:layout_marginRight="@dimen/double_spacing"
         android:layout_marginTop="@dimen/double_spacing"
@@ -21,6 +23,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="@dimen/double_spacing"
+            android:paddingBottom="@dimen/double_spacing"
+            android:paddingLeft="@dimen/double_spacing"
             >
 
         <TextView
@@ -31,7 +36,7 @@
             android:textStyle="bold"
             android:textSize="@dimen/label"
             tools:text="NAME"
-            android:paddingLeft="@dimen/spacing"
+            android:visibility="@{school.school_name == null ? View.GONE : View.VISIBLE}"
             android:layout_marginRight="@dimen/spacing"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +51,7 @@
             android:inputType="textEmailAddress"
             android:text="@{school.school_email}"
             tools:text="EMAIL"
-            android:paddingLeft="@dimen/spacing"
+            android:visibility="@{school.school_email == null ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="@id/tv_name"
             app:layout_constraintEnd_toEndOf="@id/tv_name"
             app:layout_constraintTop_toBottomOf="@id/tv_name"
@@ -60,7 +65,7 @@
             android:inputType="phone"
             android:text="@{school.phone_number}"
             tools:text="PHONE"
-            android:paddingLeft="@dimen/spacing"
+            android:visibility="@{school.phone_number == null ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="@id/tv_name"
             app:layout_constraintEnd_toEndOf="@id/tv_name"
             app:layout_constraintTop_toBottomOf="@id/tv_email"
@@ -72,9 +77,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="textUri"
+            android:autoLink="web"
             android:text="@{school.website}"
             tools:text="WEB"
-            android:paddingLeft="@dimen/spacing"
+            android:visibility="@{school.website == null ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="@id/tv_name"
             app:layout_constraintEnd_toEndOf="@id/tv_name"
             app:layout_constraintTop_toBottomOf="@id/tv_phone_number"
